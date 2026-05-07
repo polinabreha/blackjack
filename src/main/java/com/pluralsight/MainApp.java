@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MainApp {
+    public static final String RESET = "\u001B[0m";
+    public static final String RED = "\u001B[31m";
+    public static final String ANSI_WHITE = "\u001B[1;37m";
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         greeting();
@@ -29,12 +32,20 @@ public class MainApp {
                     System.out.println("Invalid choice");
             }
         }
+
+        buyGreeting();
     }
 
     public static void greeting(){
-        System.out.println("=========================================================");
-        System.out.println("==============Welcome at the BlackJack Game =============");
-        System.out.println("=========================================================");
+        System.out.println(RED + "=========================================================" + RESET);
+        System.out.println(ANSI_WHITE + "==============Welcome at the BlackJack Game =============" + RESET );
+        System.out.println(RED + "=========================================================" + RESET);
+    }
+
+    public static void buyGreeting(){
+        System.out.println(RED + "=========================================================" + RESET);
+        System.out.println(ANSI_WHITE  + "====================See You Next Time====================" + RESET);
+        System.out.println(RED + "=========================================================" + RESET);
     }
 
     public static ArrayList<String> getPlayers(Scanner input) {

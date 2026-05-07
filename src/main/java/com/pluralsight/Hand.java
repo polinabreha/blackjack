@@ -16,8 +16,17 @@ public class Hand {
     public int getValue() {
 
         int value = 0;
+        int aceCount = 0;
         for (Card card : cards) {
             value += card.getPointValue();
+            if (card.getValue().equals("A")) {
+                aceCount++;
+            }
+        }
+
+        while (value > 21 && aceCount > 0) {
+            value -= 10;
+            aceCount--;
         }
         return value;
     }

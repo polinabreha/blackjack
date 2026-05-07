@@ -14,6 +14,7 @@ public class Hand {
             return cards.size();
         }
     public int getValue() {
+
         int value = 0;
         for (Card card : cards) {
             value += card.getPointValue();

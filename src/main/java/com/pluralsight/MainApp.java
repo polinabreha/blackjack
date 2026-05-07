@@ -78,12 +78,12 @@ public class MainApp {
         while (!stay && hands.get(i).getValue() <= 21) {
             System.out.print("Hit or Stay? [H/S]: ");
             String choice = input.nextLine();
-            if (choice.equals("H")) {
+            if (choice.equalsIgnoreCase("H")) {
                 Card card = deck.deal();
                 card.flip();
                 hands.get(i).deal(card);
                 System.out.println(playerNames.get(i) + " ----> " + hands.get(i).getValue());
-            }else if (choice.equals("S")) {
+            }else if (choice.equalsIgnoreCase("S")) {
                 stay = true;
             }
 

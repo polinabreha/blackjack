@@ -10,7 +10,6 @@ public class Card {
             this.isFaceUp = false;
         }
         public String getSuit(){
-// only return the suit if the card is face up
             if(isFaceUp){
                 return suit;
             } else {
@@ -18,25 +17,28 @@ public class Card {
             }
         }
         public String getValue(){
-// only return the value if the card is face up
             if(isFaceUp){
-// this is the string value of the card
-// i.e. A, K, Q, J, 10, 9 ...
                 return value;
             } else {
                 return "#";
             }
         }
         public int getPointValue(){
-// only return the value if the card is face up
-            if (isFaceUp){
-// determine point value and return it
-// A = 11
-// K, Q, J = 10
-// all numeric cards are equal to their face value
+            if (isFaceUp) {
+                if (value .equals("A") ) {
+                    return 11;
+                }else if (value.equals("Q") || value.equals("J") || value.equals("K")){
+                    return 10;
+                }else if (value.equals("2")){
+                    return 2;
+                }else if (value.equals("3")){
+                    return 3;
+                }
+
             } else {
                 return 0;
             }
+            return getPointValue();
         }
         public boolean isFaceUp(){
             return isFaceUp;

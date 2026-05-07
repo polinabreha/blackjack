@@ -25,20 +25,41 @@ public class Card {
         }
         public int getPointValue(){
             if (isFaceUp) {
-                if (value .equals("A") ) {
-                    return 11;
-                }else if (value.equals("Q") || value.equals("J") || value.equals("K")){
-                    return 10;
-                }else if (value.equals("2")){
-                    return 2;
-                }else if (value.equals("3")){
-                    return 3;
+                switch (value) {
+                    case "A" -> {
+                        return 11;
+                    }
+                    case "Q", "J", "K" -> {
+                        return 10;
+                    }
+                    case "2" -> {
+                        return 2;
+                    }
+                    case "3" -> {
+                        return 3;
+                    }case "4" -> {
+                        return 4;
+                    }
+                    case "5" -> {
+                        return 5;
+                    }case "6" -> {
+                        return 6;
+                    }case "7" -> {
+                        return 7;
+                    }case "8" -> {
+                        return 8;
+                    }case "9" -> {
+                        return 9;
+                    }case "10" -> {
+                        return 10;
+                    }default -> {
+                        return Integer.parseInt(value);
+                    }
                 }
 
             } else {
                 return 0;
             }
-            return getPointValue();
         }
         public boolean isFaceUp(){
             return isFaceUp;

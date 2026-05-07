@@ -20,7 +20,7 @@ public class MainApp {
             switch (choice) {
                 case 1:
                     ArrayList<String> playerNames = getPlayers(input);
-                    startGame(playerNames);
+                    startGame(playerNames,input);
                     break;
                 case 2:
                     run = false;
@@ -58,7 +58,7 @@ public class MainApp {
         return playerNames;
     }
 
-    public static ArrayList<Hand> startGame(ArrayList<String> playerNames) {
+    public static ArrayList<Hand> startGame(ArrayList<String> playerNames, Scanner input) {
         ArrayList<Hand> hands = new ArrayList<>();
         Deck deck = new Deck();
         for (int i = 0; i < playerNames.size(); i++) {
@@ -73,8 +73,22 @@ public class MainApp {
             hands.add(hand);
 
             System.out.println(playerNames.get(i) + " ----> " + hands.get(i).getValue() );
-        }
 
+        boolean  stay = false;
+        while (!stay && hands.get(i).getValue() <= 21) {
+            System.out.print("Hit or Stay? [H/S]: ");
+            String choice = input.nextLine();
+            if (choice.equals("H")) {
+                Card card = deck.deal();
+                card.flip();
+                hands.get(i).deal(card);
+                System.out.println(playerNames.get(i) + " ----> " + hands.get(i).getValue());
+            }else if (choice.equals("S")) {
+                stay = true;
+            }
+
+        }
+    }
         int highestValue = 0;
         String winner = "";
         for (int i = 0; i < playerNames.size(); i++) {
